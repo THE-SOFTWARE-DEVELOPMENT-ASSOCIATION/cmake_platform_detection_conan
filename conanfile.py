@@ -103,7 +103,7 @@ class cmake_platform_detection_conan_project(ConanFile):
 
         add_cmake_option("ENABLE_TESTS", self.options.enable_tests)
 
-        cmake.configure(build_folder=self._build_subfolder)
+        #cmake.configure(build_folder=self._build_subfolder)
 
         return cmake
 
@@ -123,7 +123,7 @@ class cmake_platform_detection_conan_project(ConanFile):
         #cmake.definitions["CMAKE_TOOLCHAIN_FILE"] = 'conan_paths.cmake'
 
         # The CMakeLists.txt file must be in `source_folder`
-        cmake.configure(source_folder=".")
+        cmake.configure(build_folder=self._build_subfolder, source_folder=".")
 
         cpu_count = tools.cpu_count()
         self.output.info('Detected %s CPUs' % (cpu_count))
